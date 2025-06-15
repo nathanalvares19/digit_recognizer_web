@@ -1,0 +1,24 @@
+.github-link {
+  position: absolute;
+  bottom: 2rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  transition: transform 500ms ease;
+  text-align: center;
+}
+
+.github-link:hover {
+  transform: scale(1.03);
+}
+
+#github_link:link {
+  color: black;
+  text-decoration: none;
+}
+#github_link:visited {
+  color: black;
+}
+#github_link:hover {
+  color: black;
+}

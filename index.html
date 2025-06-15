@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./frontend/styles/app.css" />
+    <link rel="stylesheet" href="./frontend/styles/canvas.css" />
+    <link rel="stylesheet" href="./frontend/styles/computer.css" />
+    <link rel="stylesheet" href="./frontend/styles/footer.css" />
+
+    <title>Digit Recognizer</title>
+  </head>
+  <body>
+    <main>
+      <div class="canvas-container">
+        <div class="canvas">
+          <img
+            src="https://images.unsplash.com/photo-1589739900869-082b93d8f224?q=80&w=1992&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="whiteboard"
+          />
+        </div>
+        <canvas id="drawCanvas" width="430" height="331"></canvas>
+        <button class="reset-button">Reset</button>
+      </div>
+      <div class="computer-container">
+        <div class="computer">
+          <img
+            src="https://images.unsplash.com/photo-1560131914-2e469a0e8607?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="computer screen"
+          />
+        </div>
+        <button class="predict-button">Predict</button>
+      </div>
+    </main>
+    <footer>
+      <div class="github-link">
+        <a
+          id="github_link"
+          target="_blank"
+          href="https://github.com/nathanalvares19"
+        >
+          View my Github!
+        </a>
+      </div>
+    </footer>
+
+    <!-- js -->
+    <script src="./frontend/script/config.js"></script>
+    <script src="./frontend/script/app.js"></script>
+    <script src="./frontend/script/canvas.js"></script>
+  </body>
+</html>
