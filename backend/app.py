@@ -9,37 +9,42 @@ import tensorflow as tf
 
 app = FastAPI()
 
-# CORS (allow frontend access)
+# Enable CORS for all origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # change for production
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Load model (once)
-model = tf.keras.models.load_model("model.keras")
+@app.get("/")
+def root():
+    return {"message": "BACKEND IS LIVE!"}
 
-# Input model size — update this if different
+# Load model once at startup
+model = tf.keras.models.load_model("./digit_model.keras")
+
+# Standard size for input
 IMG_SIZE = (28, 28)
 
-# Pydantic schema
 class ImageData(BaseModel):
-    image: str  # base64 string
+    image: str  # base64-encoded PNG
 
 @app.post("/predict")
 async def predict(data: ImageData):
     try:
-        # Decode base64 image
+        # Decode image
         header, encoded = data.image.split(",", 1)
         img_bytes = base64.b64decode(encoded)
         img = Image.open(io.BytesIO(img_bytes)).convert("L")  # grayscale
 
-        # Resize and normalize
+        # Preprocess: resize, invert, normalize
         img = img.resize(IMG_SIZE)
-        arr = np.array(img).astype("float32") / 255.0
-        arr = arr.reshape(1, IMG_SIZE[0], IMG_SIZE[1], 1)  # shape: (1, 28, 28, 1)
+        arr = np.array(img).astype("float32")
+        arr = 255.0 - arr  # invert to match training
+        arr /= 255.0       # normalize to [0, 1]
+        arr = arr.reshape(1, 28, 28)  # match model input
 
         # Predict
         predictions = model.predict(arr)
