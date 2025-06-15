@@ -1,5 +1,6 @@
 // env
 
-window.FRONTEND_ROOT = "http://127.0.0.1:5500/index.html";
+window.FRONTEND_ROOT =
+  "https://nathanalvares19.github.io/digit_recognizer_web/";
 
-window.BACKEND_ROOT = "http://127.0.0.1:8000";
+window.BACKEND_ROOT = "https://digit-recognizer-web.onrender.com";
